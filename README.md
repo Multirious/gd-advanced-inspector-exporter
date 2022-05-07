@@ -1,1 +1,1 @@
-To install just put addon/advanced-inspector-exporter in your addon folder.
+To install just put `addons/advanced-inspector-exporter` in your addon folder.
