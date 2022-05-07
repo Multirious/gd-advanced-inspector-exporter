@@ -1,3 +1,5 @@
+Uhh if you see this ignore, it's not finish and I'm figuring out why tf is the link is not working
+
 Advanced Inspector Exporter
 ===========================
 This Godot Addon make variable advanced exporting in Godot easier.
