@@ -2,7 +2,7 @@ Advanced Inspector Exporter
 ===========================
 <p align="center">
   <a href="">
-    <img src="/addons/advanced-inspector-exporter/adv_exp.svg" width="400" alt="Advance Inspector Exporter logo">
+    <img src="/icon.svg" width="400" alt="Advance Inspector Exporter logo">
   </a>
 </p>
 
