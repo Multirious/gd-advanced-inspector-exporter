@@ -7,7 +7,7 @@ export var properties: Array
 
 This class is use to make advanced exporting is easier and shorter for people whose normal export keyword is not enough.
 Godot Documentation: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_exports.html#advanced-exports
-Requires `tool` keyword to be use.
+Requires `tool` keyword in the script file to be use.
 
 
 Note: This addon might have no need for Godot 4.0 since there's coming a better export keyword
@@ -51,8 +51,9 @@ static func enum2str(enum_dict: Dictionary, include_values: bool = false) -> Str
 # Example:
 #   func _get_property_list() -> Array:
 #       var e = AdvExp.new()
-#       e.export_catergory("AdvExp")
-func export_category(category_name: String):
+#       e.catergory("AdvExp")
+#		return e.properties
+func category(category_name: String):
 	self.properties.append({
 		"name": category_name,
 		"type": TYPE_NIL,
@@ -71,11 +72,12 @@ func export_category(category_name: String):
 #
 #   func _get_property_list() -> Array:
 #       var e = AdvExp.new()
-#       e.export_group("Player Variables", "player_")
-#       e.export_default("player_name", TYPE_STRING)
-#       e.export_default("player_velocity", TYPE_REAL)
-#       e.export_default("player_speed", TYPE_REAL)
-func export_group(group_name: String, hint_string := ""):
+#       e.group("Player Variables", "player_")
+#       e.default("player_name", TYPE_STRING)
+#       e.default("player_velocity", TYPE_REAL)
+#       e.default("player_speed", TYPE_REAL)
+#      	return e.properties
+func group(group_name: String, hint_string := ""):
 	self.properties.append({
 		"name": group_name,
 		"type": TYPE_NIL,
@@ -91,8 +93,9 @@ func export_group(group_name: String, hint_string := ""):
 #
 #   func _get_property_list() -> Array:
 #       var e = AdvExp.new()
-#       e.export_default("player_name", TYPE_STRING)
-func export_default(
+#       e.default("player_name", TYPE_STRING)
+#      	return e.properties
+func default(
 		var_name: String, type: int, hint := PROPERTY_HINT_NONE, 
 		hint_string := "", extra_usage := 0
 ):
@@ -116,8 +119,9 @@ func export_default(
 #
 #   func _get_property_list() -> Array:
 #       var e = AdvExp.new()
-#       e.export_resource("some_resource", "SomeResource")
-func export_resource(var_name: String, resource_name: String, extra_usage := 0):
+#       e.resource("some_resource", "SomeResource")
+#      	return e.properties
+func resource(var_name: String, resource_name: String, extra_usage := 0):
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_OBJECT,
@@ -129,6 +133,8 @@ func export_resource(var_name: String, resource_name: String, extra_usage := 0):
 
 # Exporting enum
 #
+# Godot analyzer is a little goofy; enum function looks like it's an `enum` keyword but it works like a function just fine.
+#
 # Example:
 #   enum State {IDLE, RUNNING, DIE, HI_MOM}
 #   
@@ -136,8 +142,9 @@ func export_resource(var_name: String, resource_name: String, extra_usage := 0):
 #
 #   func _get_property_list() -> Array:
 #       var e = AdvExp.new()
-#       e.export_enum("state", State)
-func export_enum(var_name: String, enum_: Dictionary, extra_usage := 0):
+#       e.enum("state", State)
+#      	return e.properties
+func enum(var_name: String, enum_: Dictionary, extra_usage := 0):
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_INT,
@@ -169,8 +176,9 @@ func export_enum(var_name: String, enum_: Dictionary, extra_usage := 0):
 #
 #   func _get_property_list() -> Array:
 #       var e = AdvExp.new()
-#       e.export_flags("target_executed", Target)
-func export_flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
+#       e.flags("target_executed", Target)
+#      	return e.properties
+func flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_INT,
@@ -248,9 +256,10 @@ func export_flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
 #
 #   func _get_property_list() -> Array:
 #       var e = AdvExp.new()
-#       e.export_typed_array("my_bitches", Target)
-#       e.export_typed_array("inventory", Target)
-func export_typed_array(var_name: String, hint: Array, extra_usage := 0):
+#       e.typed_array("my_bitches", Target)
+#       e.typed_array("inventory", Target)
+#      	return e.properties
+func typed_array(var_name: String, hint: Array, extra_usage := 0):
 	var hint_string := ""
 
 	assert(hint.size() < 2, "Hint parameter need to have 2 index or more")
@@ -277,10 +286,10 @@ func export_typed_array(var_name: String, hint: Array, extra_usage := 0):
 			
 			hint_string.erase(hint_string.length() - 1, 1)
 	
-	self.export_typed_array_s(var_name, hint_string, extra_usage)
+	self.typed_array_s(var_name, hint_string, extra_usage)
 
 
-func export_typed_array_s(var_name: String, hint_string: String, extra_usage := 0):
+func typed_array_s(var_name: String, hint_string: String, extra_usage := 0):
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_ARRAY,
@@ -297,8 +306,9 @@ func export_typed_array_s(var_name: String, hint_string: String, extra_usage := 
 #
 #   func _get_property_list() -> Array:
 #       var e = AdvExp.new()
-#       e.export_typed_nodepath("some_node", "Node")
-func export_typed_nodepath(var_name: String, node: String, extra_usage := 0):
+#       e.typed_nodepath("some_node", "Node")
+#      	return e.properties
+func typed_nodepath(var_name: String, node: String, extra_usage := 0):
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_NODE_PATH,

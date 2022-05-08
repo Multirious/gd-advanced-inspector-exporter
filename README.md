@@ -34,11 +34,13 @@ But doing that manually will be quite a pain and not very readable.
   <img src="https://user-images.githubusercontent.com/77918086/167287261-2aae3662-3afe-4316-af49-f21aaa2f37f3.png" width="400" alt="Advance Inspector Exporter logo">
 </p>
 
-This addon will make that, looks like this
+This addon will make that, looks like this.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/77918086/167287342-3802894a-6d99-46ee-9217-57e70006bfbe.png" width="400" alt="Advance Inspector Exporter logo">
 </p>
+
+More documentation about this plugin is inside the script file.
 
 
 [advexpdoc]: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_exports.html#advanced-exports "Godot Documentation for advance exporting"
