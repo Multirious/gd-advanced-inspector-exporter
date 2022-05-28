@@ -227,7 +227,7 @@ func flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
 #       second 17 is `PROPERTY_HINT_RESOURCE_TYPE`
 #       and "Resource" is the name of the resource type
 #
-#     As array `[1, TYPE_INT, PROPERTY_HINT_RANGE, 10, 17, 2]`
+#     As array `[1, TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE, "Resource"]`
 #    
 #    
 #     Export 2D array of type dictionary
@@ -256,8 +256,8 @@ func flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
 #
 #   func _get_property_list() -> Array:
 #       var e = AdvExp.new()
-#       e.typed_array("my_bitches", Target)
-#       e.typed_array("inventory", Target)
+#       e.typed_array("my_bitches", [1, TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE, "Bitch"])
+#       e.typed_array("inventory", [2, TYPE_INT])
 #      	return e.properties
 func typed_array(var_name: String, hint: Array, extra_usage := 0):
 	var hint_string := ""
