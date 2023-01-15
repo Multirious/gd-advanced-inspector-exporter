@@ -37,8 +37,10 @@ But doing that manually will be quite a pain and not very readable.
 This addon will make that, looks like this.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/77918086/188078091-a68a4354-5073-44e0-99cf-3b69a34b61e5.png" width="400" alt="Advance Inspector Exporter logo">
+  <img src="https://user-images.githubusercontent.com/77918086/212544258-102824ca-7aa4-42f2-acfe-7d4badeb5fa4.png" width="400" alt="Advance Inspector Exporter logo">
 </p>
+
+You have to do the align by your self 😉
 
 More documentation about this plugin is inside the script file.
 
