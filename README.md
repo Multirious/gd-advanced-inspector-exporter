@@ -2,7 +2,7 @@ Advanced Inspector Exporter
 ===========================
 <p align="center">
   <a href="">
-    <img src="/addons/advanced-inspector-exporter/adv_exp.svg" width="400" alt="Advance Inspector Exporter logo">
+    <img src="/icon.svg" width="400" alt="Advance Inspector Exporter logo">
   </a>
 </p>
 
@@ -37,7 +37,7 @@ But doing that manually will be quite a pain and not very readable.
 This addon will make that, looks like this.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/77918086/167287342-3802894a-6d99-46ee-9217-57e70006bfbe.png" width="400" alt="Advance Inspector Exporter logo">
+  <img src="https://user-images.githubusercontent.com/77918086/188078091-a68a4354-5073-44e0-99cf-3b69a34b61e5.png" width="400" alt="Advance Inspector Exporter logo">
 </p>
 
 More documentation about this plugin is inside the script file.
