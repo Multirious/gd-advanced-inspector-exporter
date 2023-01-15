@@ -322,3 +322,192 @@ func typed_nodepath(var_name: String, node: String, extra_usage := 0) -> AdvExp:
 		"hint_string": node
 	})
 	return self
+
+# Shortcut for `.export(var_name, TYPE_NIL)`
+func nil(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_NIL)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_BOOL)`
+func bool(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_BOOL)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_INT)`
+func int(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_INT)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_REAL)`
+func real(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_REAL)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_STRING)`
+func string(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_STRING)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_VECTOR2)`
+func vector2(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_VECTOR2)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_RECT2)`
+func rect2(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_RECT2)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_VECTOR3)`
+func vector3(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_VECTOR3)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_TRANSFORM2D)`
+func transform2d(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_TRANSFORM2D)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_PLANE)`
+func plane(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_PLANE)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_QUAT)`
+func quat(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_QUAT)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_AABB)`
+func aabb(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_AABB)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_BASIS)`
+func basis(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_BASIS)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_TRANSFORM)`
+func transform(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_TRANSFORM)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_COLOR)`
+func color(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_COLOR)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_NODE_PATH)`
+func node_path(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_NODE_PATH)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_RID)`
+func rid(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_RID)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_OBJECT)`
+func object(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_OBJECT)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_DICTIONARY)`
+func dictionary(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_DICTIONARY)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_ARRAY)`
+func array(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_ARRAY)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_RAW_ARRAY)`
+func raw_array(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_RAW_ARRAY)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_INT_ARRAY)`
+func int_array(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_INT_ARRAY)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_REAL_ARRAY)`
+func real_array(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_REAL_ARRAY)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_STRING_ARRAY)`
+func string_array(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_STRING_ARRAY)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_VECTOR2_ARRAY)`
+func vector2_array(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_VECTOR2_ARRAY)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_VECTOR3_ARRAY)`
+func vector3_array(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_VECTOR3_ARRAY)
+	return self
+	
+
+# Shortcut for `.export(var_name, TYPE_COLOR_ARRAY)`
+func color_array(var_name: String, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0) -> AdvExp:
+	self.export(var_name, TYPE_COLOR_ARRAY)
+	return self
+	
