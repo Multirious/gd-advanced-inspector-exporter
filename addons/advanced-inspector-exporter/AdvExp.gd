@@ -50,15 +50,16 @@ static func enum2str(enum_dict: Dictionary, include_values: bool = false) -> Str
 #
 # Example:
 #   func _get_property_list() -> Array:
-#       var e = AdvExp.new()
-#       e.catergory("AdvExp")
-#		return e.properties
-func category(category_name: String):
+#       return AdvExp.new()\
+#       .category("AdvExp")\
+#       .properties
+func category(category_name: String) -> AdvExp:
 	self.properties.append({
 		"name": category_name,
 		"type": TYPE_NIL,
 		"usage": PROPERTY_USAGE_CATEGORY
 	})
+	return self
 
 
 # Exporting group of variables
@@ -71,19 +72,20 @@ func category(category_name: String):
 #   var player_speed: float 
 #
 #   func _get_property_list() -> Array:
-#       var e = AdvExp.new()
-#       e.group("Player Variables", "player_")
-#       e.default("player_name", TYPE_STRING)
-#       e.default("player_velocity", TYPE_REAL)
-#       e.default("player_speed", TYPE_REAL)
-#      	return e.properties
-func group(group_name: String, hint_string := ""):
+#       return AdvExp.new()\
+#       .group("Player Variables", "player_")\
+#       .default("player_name", TYPE_STRING)\
+#       .default("player_velocity", TYPE_REAL)\
+#       .default("player_speed", TYPE_REAL)\
+#       .properties
+func group(group_name: String, hint_string := "") -> AdvExp:
 	self.properties.append({
 		"name": group_name,
 		"type": TYPE_NIL,
 		"hint_string": hint_string,
 		"usage": PROPERTY_USAGE_GROUP
 	})
+	return self
 
 
 # Exporting normal variables
@@ -92,13 +94,13 @@ func group(group_name: String, hint_string := ""):
 #   var player_name: String
 #
 #   func _get_property_list() -> Array:
-#       var e = AdvExp.new()
-#       e.default("player_name", TYPE_STRING)
-#      	return e.properties
-func default(
-		var_name: String, type: int, hint := PROPERTY_HINT_NONE, 
-		hint_string := "", extra_usage := 0
-):
+#       return AdvExp.new()\
+#       .default("player_name", TYPE_STRING)\
+#       .properties
+func export(
+	var_name: String, type: int, hint := PROPERTY_HINT_NONE, 
+	hint_string := "", extra_usage := 0
+) -> AdvExp:
 	self.properties.append({
 		"name": var_name,
 		"type": type,
@@ -106,6 +108,7 @@ func default(
 		"hint": hint,
 		"hint_string": hint_string
 	})
+	return self
 
 
 # Exporting resource type
@@ -118,10 +121,10 @@ func default(
 #   var some_resource: SomeResource
 #
 #   func _get_property_list() -> Array:
-#       var e = AdvExp.new()
-#       e.resource("some_resource", "SomeResource")
-#      	return e.properties
-func resource(var_name: String, resource_name: String, extra_usage := 0):
+#       return AdvExp.new()\
+#       .resource("some_resource", "SomeResource")\
+#       .properties
+func resource(var_name: String, resource_name: String, extra_usage := 0) -> AdvExp:
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_OBJECT,
@@ -129,6 +132,7 @@ func resource(var_name: String, resource_name: String, extra_usage := 0):
 		"hint": PROPERTY_HINT_RESOURCE_TYPE,
 		"hint_string": resource_name
 	})
+	return self
 
 
 # Exporting enum
@@ -141,10 +145,10 @@ func resource(var_name: String, resource_name: String, extra_usage := 0):
 #   var state: int
 #
 #   func _get_property_list() -> Array:
-#       var e = AdvExp.new()
-#       e.enum("state", State)
-#      	return e.properties
-func enum(var_name: String, enum_: Dictionary, extra_usage := 0):
+#       return AdvExp.new()\
+#       .enum("state", State)\
+#       .properties
+func enum(var_name: String, enum_: Dictionary, extra_usage := 0) -> AdvExp:
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_INT,
@@ -152,6 +156,7 @@ func enum(var_name: String, enum_: Dictionary, extra_usage := 0):
 		"hint": PROPERTY_HINT_ENUM,
 		"hint_string": enum2str(enum_, true)
 	})
+	return self
 
 
 # Exporting bit flags
@@ -175,10 +180,10 @@ func enum(var_name: String, enum_: Dictionary, extra_usage := 0):
 #   var target_executed: int
 #
 #   func _get_property_list() -> Array:
-#       var e = AdvExp.new()
-#       e.flags("target_executed", Target)
-#      	return e.properties
-func flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
+#       return AdvExp.new()\
+#       .flags("target_executed", Target)\
+#       .properties
+func flags(var_name: String, enum_flag: Dictionary, extra_usage := 0) -> AdvExp:
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_INT,
@@ -186,7 +191,7 @@ func flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
 		"hint": PROPERTY_HINT_FLAGS,
 		"hint_string": enum2str(enum_flag)
 	})
-
+	return self
 
 # Exporting typed array
 # 
@@ -208,13 +213,13 @@ func flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
 #    
 #     `export(Array, int, 10, 20, 2) var array`
 #    
-#     translated as hint string to "2/1:10,17,2"
+#     translated as hint string to "2/1:10,20,2"
 #     where:
 #       first 2 is `TYPE_INT`
 #       1 is `PROPERTY_HINT_RANGE`
-#       and 10, 17, 2 is the range 10 to 17 with step 2
+#       and 10, 20, 2 is the range 10 to 20 with step 2
 #
-#     As array `[1, TYPE_INT, PROPERTY_HINT_RANGE, 10, 17, 2]`
+#     As array `[1, TYPE_INT, PROPERTY_HINT_RANGE, 10, 20, 2]`
 #     
 #    
 #     Export array of type resource
@@ -227,7 +232,7 @@ func flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
 #       second 17 is `PROPERTY_HINT_RESOURCE_TYPE`
 #       and "Resource" is the name of the resource type
 #
-#     As array `[1, TYPE_INT, PROPERTY_HINT_RANGE, 10, 17, 2]`
+#     As array `[1, TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE, "Resource"]`
 #    
 #    
 #     Export 2D array of type dictionary
@@ -255,30 +260,29 @@ func flags(var_name: String, enum_flag: Dictionary, extra_usage := 0):
 #   var inventory := [[1, 2, 3], [4, 5], [6, 7, 8, 9]] # 2D array
 #
 #   func _get_property_list() -> Array:
-#       var e = AdvExp.new()
-#       e.typed_array("my_bitches", Target)
-#       e.typed_array("inventory", Target)
-#      	return e.properties
-func typed_array(var_name: String, hint: Array, extra_usage := 0):
+#       return AdvExp.new()\
+#       .typed_array("my_bitches", [1, TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE, "Resource"])\
+#       .typed_array("inventory", [2, TYPE_INT])\
+#       .properties
+func typed_array(var_name: String, hint: Array, extra_usage := 0) -> AdvExp:
+	assert(hint.size() >= 2, "Hint parameter need to have 2 index or more")
 	var hint_string := ""
-
-	assert(hint.size() < 2, "Hint parameter need to have 2 index or more")
 
 	for _i in hint[0] - 1:
 		hint_string += "19:"
 	
-	hint_string += hint[1].to_string()
+	hint_string += str(hint[1])
 
 	if hint.size() == 2:
 		hint_string += ":"
 	else:
-		hint_string += "/" + hint[2].to_string() + ":"
+		hint_string += "/" + str(hint[2]) + ":"
 
 		if hint.size() > 3:
 			for i in range(3, hint.size()):
 				match typeof(hint[i]):
 					TYPE_INT:
-						hint_string += hint[i].to_string() + ","
+						hint_string += str(hint[i]) + ","
 					TYPE_STRING:
 						hint_string += hint[i] + ","
 					_:
@@ -286,10 +290,10 @@ func typed_array(var_name: String, hint: Array, extra_usage := 0):
 			
 			hint_string.erase(hint_string.length() - 1, 1)
 	
-	self.typed_array_s(var_name, hint_string, extra_usage)
+	return self.typed_array_s(var_name, hint_string, extra_usage)
 
 
-func typed_array_s(var_name: String, hint_string: String, extra_usage := 0):
+func typed_array_s(var_name: String, hint_string: String, extra_usage := 0) -> AdvExp:
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_ARRAY,
@@ -297,6 +301,7 @@ func typed_array_s(var_name: String, hint_string: String, extra_usage := 0):
 		"hint": PROPERTY_HINT_TYPE_STRING,
 		"hint_string": hint_string,
 	})
+	return self
 
 
 # Exporting typed nodepath
@@ -305,10 +310,10 @@ func typed_array_s(var_name: String, hint_string: String, extra_usage := 0):
 #   export(NodePath) var some_node
 #
 #   func _get_property_list() -> Array:
-#       var e = AdvExp.new()
-#       e.typed_nodepath("some_node", "Node")
-#      	return e.properties
-func typed_nodepath(var_name: String, node: String, extra_usage := 0):
+#       return AdvExp.new()\
+#       .typed_nodepath("some_node", "Node")\
+#       .properties
+func typed_nodepath(var_name: String, node: String, extra_usage := 0) -> AdvExp:
 	self.properties.append({
 		"name": var_name,
 		"type": TYPE_NODE_PATH,
@@ -316,3 +321,4 @@ func typed_nodepath(var_name: String, node: String, extra_usage := 0):
 		"hint": PROPERTY_HINT_NODE_PATH_VALID_TYPES,
 		"hint_string": node
 	})
+	return self
